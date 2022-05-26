@@ -1,0 +1,115 @@
+
+  
+  <div style="position: relative; top: 30px;">
+    <span style="position: relative; left: 30px;">{{vm.typeOfTransaction}}</span>
+    <hr>
+  </div>
+  
+<div class="savings-container container-fluid" style="text-align: center; position: relative; top: 200px;">
+
+  <div ng-show="vm.loading">
+    <img src="images/loading.gif" alt="">
+  </div>
+  
+  <div ng-show="!vm.loading">
+  
+    <div ng-show="vm.typeOfTransaction === 'Withdraw'">
+      <div ng-show="!vm.isWithdrawalOverride">
+        <div ng-show="!vm.isReceiptForTransaction">
+          <div>
+            <span>Enter your desired amount:</span>
+            <br>
+            <br>
+            <input type="number" class="form-control" placeholder="Enter amount to withdraw" style="width: 250px; display: inline; text-align: center;" ng-change="vm.checkIfInputIsValid(vm.amountOfMoneyToWithdraw)" ng-model="vm.amountOfMoneyToWithdraw">
+            <br>
+            <span ng-if="vm.isErrorMessageShown" style="color: #d9534f; font-size: 1rem;"> Amount should be multiple of 100.</span>
+            <br>
+            <button class="btn btn-primary" style="width: 250px;" ng-click="vm.toggleReceiptForTransaction(true)" ng-disabled="vm.isSubmitButtonDisable === true || vm.amountOfMoneyToWithdraw === null || vm.amountOfMoneyToWithdraw === 0"> Enter </button>
+          </div>
+          
+        </div>
+  
+        <div ng-show="vm.isReceiptForTransaction">
+          <span>Do you want to print receipt?</span>
+          <br>
+          <br>
+          <button class="btn btn-primary" style="width: 250px;" ng-click="vm.withdraw(true)"> Yes </button>
+          <button class="btn btn-primary" style="width: 250px;" ng-click="vm.withdraw(false)"> No </button>
+        </div>
+  
+      </div>
+  
+      <div ng-show="vm.isWithdrawalOverride">
+        <span>Your balance will be less than Php 2000.00. Do you want to continue?</span>
+        <br>
+        <br>
+        <button class="btn btn-primary" style="width: 250px;" ng-click="vm.overrideWithdraw(1)"> Yes </button>
+        <button class="btn btn-primary" style="width: 250px;" ng-click="vm.overrideWithdraw(2)"> No </button>
+      </div>
+    </div>
+  
+    <div ng-show="vm.typeOfTransaction === 'Deposit'">
+      <div ng-show="!vm.isReceiptForTransaction">
+        <span> NOTE: Amount should be mutliples of 300, else the machine will dispense the remainder.</span>
+        <br>
+        <br>
+        <input type="number" class="form-control" style="width: 250px; display: inline; text-align: center;" placeholder="Enter amount to deposit" ng-change="vm.checkIfInputIsValid(vm.amountOfMoneyToDeposit)" ng-model="vm.amountOfMoneyToDeposit">
+        <br>
+        <span ng-if="vm.isErrorMessageShown" style="color: #d9534f; font-size: 1rem;"> Amount should be multiple of 100.</span>
+        <br>
+        <button class="btn btn-primary" style="width: 250px;" ng-click="vm.toggleReceiptForTransaction(true)" ng-disabled="vm.isSubmitButtonDisable === true || vm.amountOfMoneyToDeposit === null || vm.amountOfMoneyToDeposit === 0"> Enter </button>
+      </div>
+  
+      <div ng-show="vm.isReceiptForTransaction">
+        <span>Do you want to print receipt?</span>
+        <br>
+        <br>
+        <button class="btn btn-primary" style="width: 250px;" ng-click="vm.deposit(true)"> Yes </button>
+        <button class="btn btn-primary" style="width: 250px;" ng-click="vm.deposit(false)"> No </button>
+      </div>
+    </div>
+  
+    <div ng-show="vm.typeOfTransaction === 'Balance'">
+      <span>Your Balance is: {{ vm.balance | currency : "Php " : 2}} </span>
+      <br>
+      <br>
+      <button class="btn btn-primary" style="width: 250px;" ng-click="vm.makeAnotherTransaction()"> Make Another Transaction </button>
+    </div>
+  
+    <div ng-show="vm.typeOfTransaction === 'Transfer'">
+      <div ng-show=!vm.isTransferFundsOverride>
+        <div ng-show="!vm.isReceiptForTransaction">
+          <span>Enter account number and amount for transfer.</span>
+          <br>
+          <br>
+          <input type="number" placeholder="Enter account number" class="form-control" style="width: 250px; display: inline; text-align: center;" ng-model="vm.accountNumber">
+          <input type="number" placeholder="Enter Amount" class="form-control" style="width: 250px; display: inline; text-align: center;" ng-change="vm.checkIfInputIsValid(vm.amountToTransfer)" ng-model="vm.amountToTransfer">
+
+          <br>
+          <span ng-if="vm.isErrorMessageShown" style="color: #d9534f; font-size: 1rem;"> Amount should be multiple of 100.</span>
+          <br>
+          <button class="btn btn-primary" style="width: 250px;" ng-click="vm.toggleReceiptForTransaction(true)" ng-disabled="vm.isSubmitButtonDisable === true || vm.amountToTransfer === null || vm.accountNumber === vm.id || vm.accountNumber === null || vm.amountToTransfer === 0"> Transfer Funds </button>
+        </div>
+  
+        <div ng-show="vm.isReceiptForTransaction">
+          <span>Do you want to print receipt?</span>
+          <br>
+          <br>
+          <button class="btn btn-primary" style="width: 250px;" ng-click="vm.transferFunds(true)"> Yes </button>
+          <button class="btn btn-primary" style="width: 250px;" ng-click="vm.transferFunds(false)"> No </button>
+        </div>
+      </div>
+  
+      <div ng-show="vm.isTransferFundsOverride">
+        <span>Your balance will be less than Php 5000.00. Do you want to continue?</span>
+        <br>
+        <br>
+        <button class="btn btn-primary" style="width: 250px;" ng-click="vm.overrideTransferOfFundsToOtherAccount(1)"> Yes </button>
+        <button class="btn btn-primary" style="width: 250px;" ng-click="vm.overrideTransferOfFundsToOtherAccount(2)"> No </button>
+      </div>
+  
+    </div>
+  
+  </div>
+  
+</div>

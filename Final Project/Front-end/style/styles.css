@@ -1,0 +1,23 @@
+body {
+  font-size: 30px;
+  background-color: #393E46;
+  color: #fff;
+}
+
+.button-container {
+  margin: 20px;
+  padding: 20px;
+}
+
+hr {
+  height:2px;border-width:0;color:gray;background-color:gray
+}
+
+.claiming-fund {
+  color: #5cb85c;
+}
+
+th, td {
+  color: #fff;
+  font-size: 1.3rem;
+}

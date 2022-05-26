@@ -1,0 +1,42 @@
+
+
+
+<div class="transaction-container container-fluid" style="text-align: center;">
+
+  <div ng-show="vm.loading" style="margin-top: 150px;">
+    <img src="images/loading.gif" alt="">
+  </div>
+  <div ng-show="!vm.loading">
+    <span>Transaction History</span>
+  </div>
+ 
+
+
+  <div ng-show="!vm.loading" style="padding: 20px; width: 100%;">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Ref No.</th>
+          <th scope="col">Transaction Date</th>
+          <th scope="col">Type of Transaction</th>
+          <th scope="col">Type of Account</th>
+          <th scope="col">Amount</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr ng-repeat="record in vm.transactionRecords">
+          <td>{{ record.id }}</td>
+          <td>{{ record.modifiedDate }}</td>
+          <td>{{ record.transactionType }}</td>
+          <td>{{ record.typeOfAccount }}</td>
+          <td>{{ record.amount | currency : "Php " : 2 }}</td>
+        </tr>
+       
+      </tbody>
+    </table>
+    <span ng-if="vm.transactionRecords.length < 1" style="font-size: 1.4rem;"> No transaction records. </span>
+</div>
+</div>
+

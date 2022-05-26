@@ -1,0 +1,29 @@
+
+
+
+<div class="success-container container-fluid" style="text-align: center; position: relative; top: 200px;">
+
+
+<div ng-show="isTransactionSuccess">
+  <span style="color: #5cb85c; font-size: 50px;" > {{message}} </span>
+  <div id="receiptContainer" ng-show="isReceiptShown">
+    <h2>Thank you for using our service.</h2>
+    <br>
+    <span>Reference Number: {{ receipt.id }}</span>
+    <br>
+    <span>Date: {{ receipt.modifiedDate }}</span>
+    <br>
+    <span>Type of Transactiom:{{ receipt.transactionType }}</span>
+    <br>
+    <span>Type of Account: {{ receipt.typeOfAccount }}</span>
+    <br>
+    <span>Amount: {{ receipt.amount | currency : "Php " : 2}}</span>
+    <br>
+    <span>Remaining Balance: {{ receipt.balance | currency : "Php " : 2}}</span>
+  </div>
+ 
+</div>
+<div ng-show="!isTransactionSuccess">
+  <span style="color: #d9534f; font-size: 50px;"> {{message}} </span>
+</div>
+</div>

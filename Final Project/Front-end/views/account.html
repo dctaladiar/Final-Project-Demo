@@ -1,0 +1,70 @@
+
+<div class="account-container container-fluid" >
+
+  <div class="account-credentials-container" style="margin-top: 50px;">
+    <div style="padding: 10px; margin: 10px;"> <h1>{{ vm.account.name }}</h1> </div>
+    <div style="padding: 10px; margin: 10px;"> <h2>{{ vm.account.id }}</h2> </div>
+    <hr style="height:2px;border-width:0;color:gray;background-color:gray">
+  </div>
+
+
+
+
+  
+
+      <div ng-show="!vm.isMoneyTransactionInvolved" style="margin-top: 50px;">
+        
+        <div style="text-align: center; margin-bottom: 30px;">
+          <span>Please Select Your Transaction</span>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="col button-container">
+            <span class="btn btn-primary btn-lg" style="padding: 10px; width: 100% !important;" ng-click="vm.toggleTransactionView(true, 'Withdraw')" >Withdraw</span>
+  
+            </div>
+            <div class="col button-container">
+            <span class="btn btn-primary btn-lg" style="padding: 10px; width: 100% !important;" ng-click="vm.toggleTransactionView(true, 'Deposit')" >Deposit</span>
+  
+            </div>
+            <div class="col button-container">
+              <span class="btn btn-primary btn-lg" style="padding: 10px; width: 100% !important;" ng-click="vm.toggleTransactionView(true, 'Balance')" >Balance Inquiry</span>
+  
+            </div>
+          </div>
+          <div class="col">
+            <div class="col button-container" >
+              <span class="btn btn-primary btn-lg" style="padding: 10px; width: 100% !important;" ng-click="vm.toggleTransactionView(true, 'Transfer')" >Fund Transfer</span>
+  
+            </div>
+            <div class="col button-container">
+              <span class="btn btn-primary btn-lg" style="padding: 10px; width: 100% !important;" ng-click="vm.transactionHistory()" > Transaction History </span>
+  
+            </div>
+            <div class="col button-container">
+              <span class="btn btn-primary btn-lg" style="padding: 10px; width: 100% !important;" ng-click="vm.changePin()">Change Pin</span>
+  
+            </div>
+        </div>
+        
+      
+      </div>
+
+    </div>
+      <div ng-show="vm.isMoneyTransactionInvolved" style="text-align: center;">
+        <span>What type of account where you want to transact?</span>
+
+       <div class="button-container">
+        <span class="btn btn-primary btn-lg" style="padding: 10px; width: 30% !important;" ng-click="vm.open('Savings')"> Savings </span>
+          
+       </div>
+       <div class="button-container">
+        <span class="btn btn-primary btn-lg" style="padding: 10px; width: 30% !important;" ng-click="vm.open('Current')"> Current </span>
+      </div>
+      <div class="button-container">
+        <span class="btn btn-primary btn-lg" style="padding: 10px; width: 30% !important;" ng-click="vm.open('Checking')"> Checking </span> 
+      </div class="button-container">
+      <div class="button-container">
+        <span class="btn btn-primary btn-lg" style="padding: 10px; width: 30% !important;" ng-click="vm.toggleTransactionView(false, '')"> Back </span>
+      </div>
+</div>

@@ -1,0 +1,24 @@
+<div id="card-container" style="text-align: center; position: relative; top: 200px;">
+
+<div ng-show="vm.loading" style="margin-top: -50px;">
+  <img src="images/loading.gif" alt="">
+</div>
+<div ng-show="!vm.loading" style="text-align-last: center !important;">
+  
+
+  <button class="btn btn-outline-success btn-lg" ng-show="!vm.isCardReady && !vm.isCardIdAvailable" type="button" ng-click="vm.insert()"> Click here to insert your card </button>
+<div ng-show="vm.isCardReady">
+
+  <input ng-show="vm.isCardReady" type="number" class="form-control" placeholder="Enter card number" style="width: 250px; display: inline; text-align: center;" ng-model="vm.cardNumber">
+  <br>
+  <button class="btn btn-primary" style="width: 250px;" ng-show="vm.isCardReady" type="button" ng-click="vm.enterCardId()" > Enter </button>
+</div>
+  
+
+  <input ng-show="vm.isCardIdAvailable" type="password" class="form-control" placeholder="Enter pin code" style="width: 250px; display: inline; text-align: center;" ng-model="vm.pinCode" ng-change="vm.proceed()" maxlength="6">
+  <br>
+  <span ng-if="vm.isErrorMessageShown === true || vm.pinCode != null" style="font-size: 1rem; color:#d9534f"> Invalid pin code </span>
+
+</div>
+
+</div>

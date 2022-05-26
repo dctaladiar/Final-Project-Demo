@@ -1,0 +1,43 @@
+
+ <div style="position: relative; top: 30px;">
+  <span style="position: relative; left: 30px;"> {{ vm.transactionType}} </span>
+  <hr>
+</div>
+
+<div class="changePin-container container-fluid" style="text-align: center; position: relative; top: 200px;">
+
+
+  <div ng-show="vm.loading" >
+    <img src="images/loading.gif" alt="">
+  </div>
+
+<div ng-show="!vm.loading">
+  <div ng-show="!vm.isPinCodeCorrect">
+    <span>Enter your old password: </span>
+    <br>
+    <br>
+    <input type="password" class="form-control" style="width: 250px; display: inline; text-align: center;" ng-model="vm.oldPinCode" ng-change="vm.enterPinCode()" maxlength="6">
+    <br>
+    <span ng-if="vm.isErrorMessageShown === true || vm.oldPinCode != null" style="font-size: 1rem; color:#d9534f"> Invalid pin code </span>
+    
+  
+  </div>
+  
+  <div ng-show="vm.isPinCodeCorrect">
+      <span>Enter New Password</span>
+      <br>
+      <input type="password" placeholder="New password" class="form-control" style="width: 250px; display: inline; text-align: center;" ng-model="vm.newPassword" maxlength="6">
+      <br>
+  
+      <span>Confirm Password</span>
+      <br>
+      <input type="password" placeholder="Confirm password" class="form-control" style="width: 250px; display: inline; text-align: center;" ng-model="vm.confirmPassword" maxlength="6">
+      <br>
+      <span ng-if="vm.newPassword != vm.confirmPassword" style="font-size: 1rem; color: #d9534f;"> Password must match </span>
+      <span ng-if="vm.newPassword === vm.confirmPassword && vm.newPassword.length === 6" style="font-size: 1rem; color: #5cb85c;"> Password match </span>
+      <br>
+      <button class="btn btn-primary" style="width: 250px;" ng-disabled="(vm.newPassword === null || vm.newPassword != vm.confirmPassword) || (vm.newPassword.length != 6)" ng-click="vm.changePin()" maxlength="6">Change Pin</button>
+  </div>
+</div>
+
+</div>
