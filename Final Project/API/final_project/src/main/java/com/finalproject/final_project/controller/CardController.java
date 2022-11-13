@@ -22,7 +22,7 @@ public class CardController {
 	
 
 	@PostMapping(value = "/checkCardById/{id}")
-	public int checkCardById(@PathVariable(name = "id") int id){
+	public int checkCardById(@PathVariable(name = "id") int id) throws Exception {
 		return cardRepo.checkCardById(id);
 	}
 	

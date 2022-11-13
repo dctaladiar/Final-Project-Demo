@@ -1,42 +1,20 @@
 package com.finalproject.final_project.Models;
 
-public class Account {
-	
-	private int id;
-	private String name;
-	
-	// Constructor
-	public Account() {
-		super();
-	}
 
+import com.finalproject.final_project.Implementation.BusinessLogicImpl;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-	public Account(String name) {
-		super();
-		this.name = name;
-	}
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+public class Account extends BusinessLogicImpl {
+    private int id;
 
-	// Getters and setters
+    private double balance;
 
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-	
-	
-	
+    private int accountId;
 }
-
-

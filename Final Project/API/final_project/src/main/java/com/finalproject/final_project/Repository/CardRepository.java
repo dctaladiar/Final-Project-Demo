@@ -1,5 +1,6 @@
 package com.finalproject.final_project.Repository;
 
+import com.finalproject.final_project.Exceptions.CardNullException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,7 +14,7 @@ public class CardRepository {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	public int checkCardById(int id) {
+	public int checkCardById(int id) throws Exception {
 		try {
 			Card existingCard = jdbcTemplate.queryForObject("SELECT * FROM cards WHERE id = ?", new BeanPropertyRowMapper<Card>(Card.class), new Object[] {id});
 			if(existingCard != null) {
@@ -22,7 +23,7 @@ public class CardRepository {
 				return 0;
 			}
 		} catch (Exception e) {
-			return 0;
+			throw new CardNullException( );
 		}
 	}
 	
