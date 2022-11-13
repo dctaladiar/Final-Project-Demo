@@ -5,18 +5,18 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.finalproject.final_project.Models.Account;
+import com.finalproject.final_project.Models.User;
 
 @Repository
-public class AccountRepository {
+public class UserRepository {
 
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 
-	public Account getAccountById(int id) {
+	public User getAccountById(int id) {
 		try {
 			return jdbcTemplate.queryForObject("SELECT id, name FROM accounts WHERE id =?",
-					new BeanPropertyRowMapper<Account>(Account.class), new Object[] { id });
+					new BeanPropertyRowMapper<User>(User.class), new Object[] { id });
 		} catch (Exception e) {
 			return null;
 		}

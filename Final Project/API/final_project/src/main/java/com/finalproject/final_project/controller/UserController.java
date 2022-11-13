@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.finalproject.final_project.Models.Account;
-import com.finalproject.final_project.Repository.AccountRepository;
+import com.finalproject.final_project.Models.User;
+import com.finalproject.final_project.Repository.UserRepository;
 
 @RestController
 @CrossOrigin
 @RequestMapping(value = "/account")
-public class AccountController {
+public class UserController {
 
 	@Autowired
-	AccountRepository accountRepo;
+	UserRepository accountRepo;
 	
 	@PostMapping(value = "/getAccountById/{id}")
-	public Account getAccountById(@PathVariable(name = "id") int id) throws NotFoundException {	
+	public User getAccountById(@PathVariable(name = "id") int id) throws NotFoundException {
 		return accountRepo.getAccountById(id);
 	}
 	
